@@ -11,7 +11,7 @@ Requisitos:
 
 Variables de entorno (.env):
 
-- `PORT` - puerto donde corre la app (por defecto 5000)
+- `PORT` - puerto donde corre la app (por defecto 3000)
 - `MONGO_URI` - cadena de conexión a MongoDB
 - `SECRET` - clave para firmar JWT
 
@@ -48,7 +48,7 @@ Documentación (Swagger / OpenAPI):
 
 - La documentación está disponible en:
 
-  http://localhost:5000/api-docs
+  http://localhost:3000/api-docs
 
 - Utiliza autenticación Bearer (JWT) para los endpoints protegidos. En la UI de Swagger, pulsa "Authorize" e introduce `Bearer <tu_token>`.
 
@@ -56,7 +56,3 @@ Notas y siguientes pasos sugeridos:
 
 - Asegúrate de crear el archivo `.env` con `MONGO_URI` y `SECRET` antes de arrancar.
 - Ejecutar pruebas y añadir validación adicional si se necesita.
-
-Contacto:
-
-- Proyecto creado localmente — adapta según tu despliegue/entorno.
