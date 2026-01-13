@@ -22,6 +22,31 @@ const swaggerSpec = {
             updatedAt: { type: 'string', format: 'date-time' },
             },
         },
+        UserCreate: {
+            type: 'object',
+            required: ['username', 'email', 'password'],
+            properties: {
+            username: { type: 'string', example: 'usuario1' },
+            email: { type: 'string', format: 'email', example: 'usuario@example.com' },
+            password: { type: 'string', format: 'password' },
+            },
+        },
+        UserLogin: {
+            type: 'object',
+            required: ['email', 'password'],
+            properties: {
+            email: { type: 'string', format: 'email', example: 'usuario@example.com' },
+            password: { type: 'string', format: 'password' },
+            },
+        },
+        UserUpdate: {
+            type: 'object',
+            properties: {
+            username: { type: 'string' },
+            email: { type: 'string', format: 'email' },
+            password: { type: 'string', format: 'password' },
+            },
+        },
         Product: {
             type: 'object',
             properties: {
@@ -33,6 +58,23 @@ const swaggerSpec = {
             updatedAt: { type: 'string', format: 'date-time' },
             },
         },
+        ProductCreate: {
+            type: 'object',
+            required: ['name', 'price'],
+            properties: {
+            name: { type: 'string', example: 'producto' },
+            price: { type: 'number', example: 0 },
+            description: { type: 'string' },
+            },
+        },
+        ProductUpdate: {
+            type: 'object',
+            properties: {
+            name: { type: 'string' },
+            price: { type: 'number' },
+            description: { type: 'string' },
+            },
+        },
         },
         securitySchemes: {
         bearerAuth: {
@@ -42,7 +84,6 @@ const swaggerSpec = {
         },
         },
     },
-    security: [{ bearerAuth: [] }],
     paths: {
         '/products': {
         get: {
@@ -53,7 +94,7 @@ const swaggerSpec = {
                 description: 'Lista de productos',
                 content: {
                 'application/json': {
-                    schema: { type: 'object' },
+                    schema: { type: 'object', properties: { products: { type: 'array', items: { $ref: '#/components/schemas/Product' } } } },
                 },
                 },
             },
@@ -66,12 +107,12 @@ const swaggerSpec = {
             required: true,
             content: {
                 'application/json': {
-                schema: { $ref: '#/components/schemas/Product' },
+                schema: { $ref: '#/components/schemas/ProductCreate' },
                 },
             },
             },
             responses: {
-            '201': { description: 'Producto creado' },
+            '201': { description: 'Producto creado', content: { 'application/json': { schema: { $ref: '#/components/schemas/Product' } } } },
             },
         },
         },
@@ -80,14 +121,14 @@ const swaggerSpec = {
             tags: ['Products'],
             summary: 'Obtener producto por ID',
             parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
-            responses: { '200': { description: 'Producto encontrado' }, '404': { description: 'No encontrado' } },
+            responses: { '200': { description: 'Producto encontrado', content: { 'application/json': { schema: { $ref: '#/components/schemas/Product' } } } }, '404': { description: 'No encontrado' } },
         },
         put: {
             tags: ['Products'],
             summary: 'Actualizar producto por ID',
             parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
-            requestBody: { content: { 'application/json': { schema: { $ref: '#/components/schemas/Product' } } } },
-            responses: { '200': { description: 'Producto actualizado' } },
+            requestBody: { content: { 'application/json': { schema: { $ref: '#/components/schemas/ProductUpdate' } } } },
+            responses: { '200': { description: 'Producto actualizado', content: { 'application/json': { schema: { $ref: '#/components/schemas/Product' } } } } },
         },
         delete: {
             tags: ['Products'],
@@ -100,15 +141,15 @@ const swaggerSpec = {
         post: {
             tags: ['Users'],
             summary: 'Registrar usuario',
-            requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/User' } } } },
-            responses: { '201': { description: 'Usuario creado' } },
+            requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/UserCreate' } } } },
+            responses: { '201': { description: 'Usuario creado', content: { 'application/json': { schema: { $ref: '#/components/schemas/User' } } } } },
         },
         },
         '/users/login': {
         post: {
             tags: ['Users'],
             summary: 'Login',
-            requestBody: { required: true, content: { 'application/json': { schema: { type: 'object' } } } },
+            requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/UserLogin' } } } },
             responses: { '200': { description: 'Token' }, '400': { description: 'Credenciales inválidas' } },
         },
         },
@@ -135,18 +176,11 @@ const swaggerSpec = {
             required: true,
             content: {
                 'application/json': {
-                schema: {
-                    type: 'object',
-                    properties: {
-                    username: { type: 'string' },
-                    email: { type: 'string' },
-                    password: { type: 'string' },
-                    },
-                },
+                schema: { $ref: '#/components/schemas/UserUpdate' },
                 },
             },
             },
-            responses: { '200': { description: 'Usuario actualizado' }, '401': { description: 'No autorizado' } },
+            responses: { '200': { description: 'Usuario actualizado', content: { 'application/json': { schema: { $ref: '#/components/schemas/User' } } } }, '401': { description: 'No autorizado' } },
         },
         },
     },
