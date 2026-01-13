@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const guitarSchema = mongoose.Schema(
+const productSchema = mongoose.Schema(
     {
         name: {
             type: String,
@@ -19,6 +19,6 @@ const guitarSchema = mongoose.Schema(
     }
 );
 
-const Guitar = mongoose.model('Guitar', guitarSchema);
+const Product = mongoose.model('Product', productSchema);
 
-module.exports = Guitar;
+module.exports = Product;

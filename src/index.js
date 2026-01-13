@@ -5,7 +5,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 
 const userRouter = require('./routes/user.routes');
-const guitarRouter = require('./routes/guitar.routes');
+const productRouter = require('./routes/product.routes');
 
 const PORT = process.env.PORT || 5000;
 
@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
     return res.status(200).json({ message: 'OK' });
 });
 
-app.use ('/users', userRouter);
-app.use('/guitars', guitarRouter);
+app.use('/users', userRouter);
+app.use('/products', productRouter);
 
 app.listen(PORT, () => {
     console.log('El servidor está corriendo en el puerto', PORT);
