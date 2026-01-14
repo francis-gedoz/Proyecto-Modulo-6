@@ -1,4 +1,4 @@
-# Proyecto - API de Usuarios y Productos
+# API de Usuarios y Productos
 
 Descripción:
 
