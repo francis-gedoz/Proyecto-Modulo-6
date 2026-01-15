@@ -73,9 +73,3 @@ Notas y siguientes pasos sugeridos:
 
 https://proyecto-modulo-6.onrender.com/
 
----
-
-# Despliegue de Swagger en Render.com
-
-https://proyecto-modulo-6.onrender.com/api-docs/
-
