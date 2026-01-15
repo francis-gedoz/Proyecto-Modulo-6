@@ -7,10 +7,11 @@ const swaggerSpec = {
     },
     servers: [
         {
-        url: 'http://localhost:3000',
+        url: 'https://proyecto-modulo-6.onrender.com'
+        
         },
         {
-        url: 'https://proyecto-modulo-6.onrender.com',
+        url: 'http://localhost:3000',
         }
     ],
     components: {
