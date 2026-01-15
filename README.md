@@ -1,33 +1,41 @@
 # API de Usuarios y Productos
 
-Descripción:
+## Descripción:
 
 - API REST sencilla para manejar usuarios y productos. Incluye autenticación con JWT y documentación OpenAPI/Swagger.
 
-Requisitos:
+---
+
+## Requisitos:
 
 - Node.js v16+ y npm
-- MongoDB (local o Atlas)
+- MongoDB Atlas
 
-Variables de entorno (.env):
+---
+
+## Variables de entorno (.env):
 
 - `PORT` - puerto donde corre la app (por defecto 3000)
 - `MONGO_URI` - cadena de conexión a MongoDB
 - `SECRET` - clave para firmar JWT
 
-Instalación:
+---
+
+## Instalación:
 
 ```bash
 npm install
 ```
+---
 
-Ejecución en desarrollo:
+## Ejecución en desarrollo:
 
 ```bash
 npm run dev
 ```
+---
 
-Rutas principales:
+## Rutas principales:
 
 - Usuarios:
 
@@ -44,7 +52,9 @@ Rutas principales:
   - `PUT /products/{id}` — actualizar producto por ID.
   - `DELETE /products/{id}` — eliminar producto por ID.
 
-Documentación (Swagger / OpenAPI):
+---
+
+## Documentación (Swagger / OpenAPI):
 
 - La documentación está disponible en:
 
@@ -56,3 +66,16 @@ Notas y siguientes pasos sugeridos:
 
 - Asegúrate de crear el archivo `.env` con `MONGO_URI` y `SECRET` antes de arrancar.
 - Ejecutar pruebas y añadir validación adicional si se necesita.
+
+---
+
+# Despliegue en Render.com
+
+https://proyecto-modulo-6.onrender.com/
+
+---
+
+# Despliegue de Swagger en Render.com
+
+https://proyecto-modulo-6.onrender.com/api-docs/
+

@@ -9,6 +9,9 @@ const swaggerSpec = {
         {
         url: 'http://localhost:3000',
         },
+        {
+        url: 'https://proyecto-modulo-6.onrender.com',
+        }
     ],
     components: {
         schemas: {
